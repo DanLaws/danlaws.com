@@ -1,132 +1,247 @@
 <!doctype html>
 <html lang="en-GB">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Dan Laws</title>
-    <meta name="description" content="Dan Laws. New site coming soon." />
-    <!-- Placeholder page: keep it out of search results until the real site launches. -->
-    <meta name="robots" content="noindex" />
-    <meta name="theme-color" content="#f5f3ee" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#111210" media="(prefers-color-scheme: dark)" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <style>
-      :root {
-        --bg: #f5f3ee;
-        --ink: #1b1a17;
-        --muted: #6e6a61;
-        --line: #dcd8cf;
-        --accent: #2f6f5e;
-        color-scheme: light;
-      }
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --bg: #111210;
-          --ink: #ecebe6;
-          --muted: #9d9b93;
-          --line: #2a2c28;
-          --accent: #6cc3a4;
-          color-scheme: dark;
-        }
-      }
-      * { box-sizing: border-box; }
-      html, body { height: 100%; }
-      body {
-        margin: 0;
-        background: var(--bg);
-        color: var(--ink);
-        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        display: grid;
-        grid-template-rows: 1fr auto;
-        min-height: 100dvh;
-      }
-      main {
-        display: grid;
-        align-content: center;
-        gap: 1.5rem;
-        width: min(40rem, 100% - 2rem);
-        margin-inline: auto;
-        padding-block: 4rem;
-      }
-      h1 {
-        margin: 0;
-        font-family: ui-serif, "New York", Georgia, "Times New Roman", serif;
-        font-weight: 500;
-        font-size: clamp(3rem, 12vw, 5.5rem);
-        line-height: 0.95;
-        letter-spacing: -0.03em;
-      }
-      .status {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.6rem;
-        margin: 0;
-        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-        font-size: 0.875rem;
-        color: var(--muted);
-      }
-      .dot {
-        width: 0.5rem;
-        height: 0.5rem;
-        border-radius: 50%;
-        background: var(--accent);
-        box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 60%, transparent);
-        animation: pulse 2.4s ease-out infinite;
-      }
-      @keyframes pulse {
-        0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 50%, transparent); }
-        70%, 100% { box-shadow: 0 0 0 0.6rem transparent; }
-      }
-      @media (prefers-reduced-motion: reduce) {
-        .dot { animation: none; }
-      }
-      p.lede {
-        margin: 0;
-        max-width: 30rem;
-        font-size: 1.125rem;
-        line-height: 1.6;
-        color: var(--muted);
-      }
-      nav { display: flex; flex-wrap: wrap; gap: 0.75rem; }
-      nav a {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.55rem 0.9rem;
-        border: 1px solid var(--line);
-        border-radius: 999px;
-        color: var(--ink);
-        text-decoration: none;
-        font-size: 0.9375rem;
-        transition: border-color 0.15s, color 0.15s;
-      }
-      nav a:hover, nav a:focus-visible { border-color: var(--accent); color: var(--accent); }
-      nav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-      nav svg { width: 1rem; height: 1rem; fill: currentColor; }
-      footer {
-        width: min(40rem, 100% - 2rem);
-        margin-inline: auto;
-        padding-block: 1.5rem;
-        border-top: 1px solid var(--line);
-        font-size: 0.8125rem;
-        color: var(--muted);
-      }
-    </style>
-  </head>
-  <body>
-    <main>
-      <p class="status"><span class="dot" aria-hidden="true"></span>New site in progress</p>
-      <h1>Dan Laws</h1>
-      <p class="lede">I'm putting together a home for my work and projects. Check back soon.</p>
-      <nav aria-label="Elsewhere">
-        <a href="https://github.com/DanLaws" rel="me noopener">
-          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0a8 8 0 0 0-2.53 15.59c.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.05-.49.05-.49.8.06 1.23.83 1.23.83.72 1.22 1.88.87 2.34.67.07-.52.28-.87.5-1.07-1.78-.2-3.65-.89-3.65-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 8 0Z"/></svg>
-          GitHub
-        </a>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Preview build: remove noindex when this becomes the live site. -->
+<meta name="robots" content="noindex">
+<title>Dan Laws: design and front-end build, Poole</title>
+<meta name="description" content="Dan Laws designs and builds websites, web apps and the products behind them. Co-founder of Sandbanks Digital in Poole, Dorset.">
+<link rel="canonical" href="https://danlaws.com/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#043866">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dan Laws">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://danlaws.com/">
+<meta property="og:title" content="Dan Laws: design and front-end build">
+<meta property="og:description" content="Websites, web apps and the products behind them. Co-founder of Sandbanks Digital in Poole, Dorset.">
+<link rel="preload" href="assets/fonts/bitcount-grid-single-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/piazzolla-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/suse-mono-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" href="assets/hero-poster-1280.webp" imagesrcset="assets/hero-poster-800.webp 800w, assets/hero-poster-1280.webp 1280w, assets/hero-poster-1920.webp 1920w" imagesizes="100vw" media="(min-width: 641px)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/hero-poster-m-720.webp" imagesrcset="assets/hero-poster-m-480.webp 480w, assets/hero-poster-m-720.webp 720w" imagesizes="100vw" media="(max-width: 640px)" fetchpriority="high">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="site.css">
+<script>document.documentElement.className+=' js'</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Dan Laws","url":"https://danlaws.com/","jobTitle":"Co-founder, design and front-end lead","worksFor":{"@type":"Organization","name":"Sandbanks Digital","url":"https://sandbanksdigital.com/"},"address":{"@type":"PostalAddress","addressLocality":"Poole","addressRegion":"Dorset","addressCountry":"GB"},"sameAs":["https://github.com/DanLaws"]}</script>
+</head>
+<body data-page="index">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="gauge top-in">
+    <a class="logo" href="index.html" aria-label="Dan Laws: home" aria-current="page"><svg class="sig" viewBox="0 0 40 40" width="34" height="34" aria-hidden="true" focusable="false"><g fill="currentColor"><rect x="4" y="4" width="6" height="6"/><rect x="14" y="4" width="6" height="6"/><rect x="4" y="14" width="6" height="6"/><rect x="24" y="14" width="6" height="6"/><rect x="4" y="24" width="6" height="6"/><rect x="24" y="24" width="6" height="6"/><rect x="4" y="34" width="6" height="6"/><rect x="14" y="34" width="6" height="6"/></g></svg><span class="logo-name">Dan Laws</span></a>
+    <nav class="links" id="menu" aria-label="Main">
+      <ul>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="links-book"><a href="contact.html" class="links-book-link">Get in touch</a></li>
+      </ul>
+    </nav>
+    <a href="contact.html" class="top-go">Get in touch</a>
+    <button class="links-toggle" type="button" aria-expanded="false" aria-controls="menu"><span>Menu</span></button>
+  </div>
+</header>
+<main id="main">
+<section class="hero" aria-label="Introduction">
+  <div class="film" aria-hidden="true">
+    <picture><source media="(max-width: 640px)" srcset="assets/hero-poster-m-480.webp 480w, assets/hero-poster-m-720.webp 720w" sizes="100vw" width="720" height="1000"><img class="poster" src="assets/hero-poster-1280.webp" srcset="assets/hero-poster-800.webp 800w, assets/hero-poster-1280.webp 1280w, assets/hero-poster-1920.webp 1920w" sizes="100vw" width="1280" height="720" alt="" fetchpriority="high" decoding="async"></picture>
+    <video class="reel" muted playsinline loop preload="none" tabindex="-1" data-src="assets/hero.mp4" data-src-m="assets/hero-m.mp4"></video>
+  </div>
+  <div class="gauge hero-body">
+    <h1 class="hero-title"><span class="w">I</span> <span class="w">build</span> <span class="w">things</span> <span class="w">that</span> <span class="w">ship.</span></h1>
+    <p class="lede">I&rsquo;m Dan Laws, co-founder of Sandbanks Digital in Poole, Dorset. I lead design and front-end build on websites, web apps and the products we run ourselves.</p>
+    <a href="work.html" class="cta">See the work</a>
+  </div>
+  <button class="film-toggle" type="button" aria-pressed="false">Pause film</button>
+</section>
+
+<section class="bay bay-ground" id="find" aria-labelledby="find-h">
+  <div class="gauge install-grid">
+    <div class="install-copy" data-reveal>
+      <h2 id="find-h">Find me in one line</h2>
+      <p>Pick where you&rsquo;d like to look. Copy it, paste it into your browser, and have a look round.</p>
+    </div>
+    <div class="installer" data-installer>
+      <dl class="cmd-list" aria-label="Where to find me">
+        <div class="cmd-static"><dt>GitHub</dt><dd><pre><code>github.com/DanLaws</code></pre></dd></div>
+        <div class="cmd-static"><dt>Studio</dt><dd><pre><code>sandbanksdigital.com</code></pre></dd></div>
+        <div class="cmd-static"><dt>Here</dt><dd><pre><code>danlaws.com</code></pre></dd></div>
+      </dl>
+      <div class="cmd-live" hidden>
+        <div class="tabs" role="group" aria-label="Where to look">
+          <button class="tab" type="button" data-tab="0" aria-pressed="true">GitHub</button>
+          <button class="tab" type="button" data-tab="1" aria-pressed="false">Studio</button>
+          <button class="tab" type="button" data-tab="2" aria-pressed="false">Here</button>
+        </div>
+        <div class="cmd-box">
+          <pre class="cmd" tabindex="0"><code data-cmd><span class="tk">github.com/DanLaws<span class="ul"></span></span></code></pre>
+          <button class="copy" type="button" data-copy aria-label="Copy the address"><span data-copy-label>Copy</span></button>
+        </div>
+        <p class="vh" role="status" aria-live="polite" data-copy-status></p>
+        <ul class="next" aria-label="What to do next">
+          <li><span class="sq" aria-hidden="true"><span class="fill"></span></span>Paste it into your browser</li>
+          <li><span class="sq" aria-hidden="true"><span class="fill"></span></span>Have a look round</li>
+          <li><span class="sq" aria-hidden="true"><span class="fill"></span></span>Then say hello on the contact page</li>
+        </ul>
+      </div>
+      <p class="cmd-after">Or skip the copying and <a href="contact.html">go straight to the contact page</a>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="bay bay-paper" id="lately" aria-labelledby="lat-h">
+  <div class="gauge">
+    <div class="bay-head" data-reveal>
+      <h2 id="lat-h">What shipped lately</h2>
+      <a class="onward" href="work.html">All the work <svg class="tail" viewBox="0 0 28 14" width="28" height="14" aria-hidden="true" focusable="false"><path d="M0 7h26M20 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="square"/></svg></a>
+    </div>
+    <ol class="feed" data-feed data-reveal="stagger">
+      <li class="entry">
+        <span class="rule" aria-hidden="true"></span>
+        <div class="when"><p class="when-date">November 2026</p><p class="when-ago">Live</p></div>
+        <div class="what">
+          <p class="ver">Client site</p>
+          <h3>A camper-van ladder maker, selling online</h3>
+          <ul class="chg">
+            <li><span class="k k-fix">Shipped</span><span class="t">A new site for a telescopic ladder made for pop-top camper vans, taking payment through Stripe.</span></li>
+            <li><span class="k k-add">Built</span><span class="t">Fast static pages on a small Node server, behind Cloudflare.</span></li>
+          </ul>
+        </div>
+      </li>
+      <li class="entry">
+        <span class="rule" aria-hidden="true"></span>
+        <div class="when"><p class="when-date">November 2026</p><p class="when-ago">Live</p></div>
+        <div class="what">
+          <p class="ver">Client site</p>
+          <h3>A 24/7 mobile tyre fitter, from demo to full site</h3>
+          <ul class="chg">
+            <li><span class="k k-fix">Shipped</span><span class="t">Turned a pitch demo into the business&rsquo;s full site, covering Poole, Dorset and Hampshire.</span></li>
+          </ul>
+        </div>
+      </li>
+      <li class="entry">
+        <span class="rule" aria-hidden="true"></span>
+        <div class="when"><p class="when-date">August 2026</p><p class="when-ago">Our product</p></div>
+        <div class="what">
+          <p class="ver">Cavri</p>
+          <h3>A workspace for Vinted sellers</h3>
+          <ul class="chg">
+            <li><span class="k k-add">Built</span><span class="t">Imports a seller&rsquo;s wardrobe, edits listings in bulk and writes listing copy with AI.</span></li>
+            <li><span class="k k-add">Built</span><span class="t">A browser extension that publishes, syncs and relists.</span></li>
+          </ul>
+        </div>
+      </li>
+      <li class="entry">
+        <span class="rule" aria-hidden="true"></span>
+        <div class="when"><p class="when-date">April 2026</p><p class="when-ago">Our product</p></div>
+        <div class="what">
+          <p class="ver">carFlippy</p>
+          <h3>UK car checks, valuations and garages</h3>
+          <ul class="chg">
+            <li><span class="k k-add">Built</span><span class="t">MOT and registration data with UK running-cost modelling, across a public site and an app.</span></li>
+            <li><span class="k k-fix">Shipped</span><span class="t">Live at carflippy.com.</span></li>
+          </ul>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- DRAFT: these four lines are a first draft written from how Sandbanks Digital describes itself. Rewrite them in Dan's own words. -->
+<section class="bay bay-ground" id="hold" aria-labelledby="hold-h">
+  <div class="gauge hold-grid">
+    <div class="hold-side">
+      <h2 id="hold-h" data-reveal>What I hold to</h2>
+      <figure class="stip" data-reveal><img src="assets/img/flock-hold.webp" width="720" height="900" alt="A flock of birds in flight, drawn as a pattern of paper-coloured dots on dark blue" loading="lazy" decoding="async"></figure>
+    </div>
+    <div class="hold" data-reveal="stagger">
+      <p>Build it properly, in-house. Everything we make at Sandbanks is designed and coded by the two of us, so the person you talk to is the person who builds it.</p>
+      <p>Fast and plain beats clever. Static pages where they will do, a framework where it earns its place, and nothing a visitor has to sit and wait for.</p>
+      <p>A launch is the start, not the end. Sites and products get looked after, measured and improved for as long as they are running.</p>
+      <p>Small businesses deserve good tools. Most of what I build is for owners who run everything themselves, so it has to be simple to use and honest about what it costs.</p>
+    </div>
+  </div>
+</section>
+
+<section class="bay bay-paper" id="start" aria-labelledby="start-h">
+  <div class="gauge">
+    <h2 id="start-h" data-reveal>Start where you like</h2>
+    <div class="docs-grid">
+      <nav class="docnav" aria-label="Sections of this site" data-reveal>
+        <ul>
+          <li><a href="work.html#products" aria-current="true"><span class="dn">Products</span><span class="dd">The things we build and run ourselves</span></a></li>
+          <li><a href="work.html#clients"><span class="dn">Client sites</span><span class="dd">Websites for small businesses</span></a></li>
+          <li><a href="about.html#career"><span class="dn">Career</span><span class="dd">Where I&rsquo;ve been, in order</span></a></li>
+          <li><a href="about.html#skills"><span class="dn">Skills</span><span class="dd">The tools I reach for</span></a></li>
+          <li><a href="contact.html"><span class="dn">Contact</span><span class="dd">Say hello</span></a></li>
+        </ul>
       </nav>
-    </main>
-    <footer>© <span id="year">2026</span> Dan Laws</footer>
-    <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
-  </body>
+      <div class="starts" data-reveal="stagger">
+        <article class="start"><p class="start-when">In a minute</p><h3>Skim the work</h3><p>Products and client sites, newest first, with what was built and what shipped.</p><a class="onward" href="work.html">See the work <svg class="tail" viewBox="0 0 28 14" width="28" height="14" aria-hidden="true" focusable="false"><path d="M0 7h26M20 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="square"/></svg></a></article>
+        <article class="start"><p class="start-when">In five minutes</p><h3>Read how I work</h3><p>Background, the studio, and the tools I use to get things live.</p><a class="onward" href="about.html">About me <svg class="tail" viewBox="0 0 28 14" width="28" height="14" aria-hidden="true" focusable="false"><path d="M0 7h26M20 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="square"/></svg></a></article>
+        <article class="start"><p class="start-when">When you&rsquo;re ready</p><h3>Start a conversation</h3><p>A site for your business, a product idea, or a role you&rsquo;re hiring for.</p><a class="onward" href="contact.html">Get in touch <svg class="tail" viewBox="0 0 28 14" width="28" height="14" aria-hidden="true" focusable="false"><path d="M0 7h26M20 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="square"/></svg></a></article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bay bay-ground bay-photo" id="built-for" aria-labelledby="bf-h">
+  <figure class="band-photo"><img src="assets/img/fibre-1280.jpg" srcset="assets/img/fibre-800.jpg 800w, assets/img/fibre-1280.jpg 1280w, assets/img/fibre-1800.jpg 1800w" sizes="100vw" width="1800" height="770" alt="Fine optical fibres fanned out in the dark, each tip lit" loading="lazy" decoding="async"></figure>
+  <div class="gauge">
+    <div class="bay-head" data-reveal>
+      <h2 id="bf-h">Who I&rsquo;ve built for</h2>
+      <a class="onward" href="work.html">See the work <svg class="tail" viewBox="0 0 28 14" width="28" height="14" aria-hidden="true" focusable="false"><path d="M0 7h26M20 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="square"/></svg></a>
+    </div>
+    <div class="tiers" data-sponsors>
+      <div class="tier"><h3>Our own products</h3><ul>
+        <li class="sp">carFlippy</li>
+        <li class="sp">Cavri</li>
+        <li class="sp">BCP Directory</li>
+        <li class="sp">OneBridal</li>
+      </ul></div>
+      <div class="tier"><h3>Small businesses</h3><ul>
+        <li class="sp">A 24/7 mobile tyre fitter</li>
+        <li class="sp">A paralegal practice in Ontario</li>
+        <li class="sp">A camper-van ladder maker</li>
+        <li class="sp">A bridal and groomwear shop</li>
+        <li class="sp">A removals firm</li>
+        <li class="sp">A commercial cleaning company</li>
+      </ul></div>
+      <p class="tier-note">Client names are left off on purpose. Ask, and I&rsquo;ll point you at the live sites.</p>
+    </div>
+  </div>
+</section>
+
+<section class="bay bay-paper" id="doors" aria-labelledby="doors-h">
+  <div class="gauge">
+    <h2 id="doors-h" data-reveal>Ways to work together</h2>
+    <dl class="gov" data-reveal="stagger">
+      <div class="gov-row"><dt>A website for your business</dt><dd><p>That&rsquo;s Sandbanks Digital, the studio I run with my co-founder. We design, build and look after the site, on a monthly plan with nothing to pay upfront.</p><a class="onward" href="https://sandbanksdigital.com" rel="noopener">Visit the studio <svg class="tail" viewBox="0 0 28 14" width="28" height="14" aria-hidden="true" focusable="false"><path d="M0 7h26M20 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="square"/></svg></a></dd></div>
+      <div class="gov-row"><dt>A product or web app</dt><dd><p>Tell me the problem before the feature list. Most of what we&rsquo;ve built started as one awkward job someone did by hand.</p><a class="onward" href="contact.html">Tell me about it <svg class="tail" viewBox="0 0 28 14" width="28" height="14" aria-hidden="true" focusable="false"><path d="M0 7h26M20 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="square"/></svg></a></dd></div>
+      <div class="gov-row"><dt>Hiring, or something else</dt><dd><p>The contact page is the quickest way to me.</p><a class="onward" href="contact.html">Contact <svg class="tail" viewBox="0 0 28 14" width="28" height="14" aria-hidden="true" focusable="false"><path d="M0 7h26M20 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="square"/></svg></a></dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="bay bay-band ask" aria-labelledby="close-h">
+  <div class="gauge"><div class="ask-in" data-reveal>
+    <h2 id="close-h">Got something worth building?</h2>
+    <p>Tell me what it is and who it&rsquo;s for. I&rsquo;ll tell you honestly whether I&rsquo;m the right person to build it.</p>
+    <a href="contact.html" class="solid">Get in touch</a>
+  </div></div>
+</section>
+</main>
+<footer class="base">
+  <div class="gauge base-in">
+    <div><p class="base-brand"><svg class="sig" viewBox="0 0 40 40" width="34" height="34" aria-hidden="true" focusable="false"><g fill="currentColor"><rect x="4" y="4" width="6" height="6"/><rect x="14" y="4" width="6" height="6"/><rect x="4" y="14" width="6" height="6"/><rect x="24" y="14" width="6" height="6"/><rect x="4" y="24" width="6" height="6"/><rect x="24" y="24" width="6" height="6"/><rect x="4" y="34" width="6" height="6"/><rect x="14" y="34" width="6" height="6"/></g></svg><span>Dan Laws</span></p><p>Design and front-end build. Co-founder of Sandbanks Digital, Poole, Dorset.</p></div>
+    <div><p><a href="https://github.com/DanLaws" rel="me noopener">github.com/DanLaws</a></p><p><a href="https://sandbanksdigital.com" rel="noopener">sandbanksdigital.com</a></p></div>
+    <nav aria-label="Footer"><a href="index.html">Home</a><a href="work.html">Work</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
+  </div>
+  <div class="gauge"><p class="base-small">&copy; 2026 Dan Laws</p></div>
+</footer>
+<script src="assets/motion.js"></script>
+<script src="script.js"></script>
+</body>
 </html>

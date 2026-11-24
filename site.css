@@ -1,0 +1,31 @@
+/* danlaws.com additions on top of the Stipple template (style.css stays as shipped). */
+
+/* Placeholder rows that still need Dan's real details. Visible on purpose until filled in. */
+.todo {
+  outline: 1px dashed currentColor;
+  outline-offset: 6px;
+  opacity: 0.85;
+}
+.todo-tag {
+  display: inline-block;
+  margin-left: 0.5em;
+  padding: 0.1em 0.45em;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  vertical-align: middle;
+  background: var(--mark);
+  color: var(--deep);
+}
+
+/* The "elsewhere" panel on the contact page, in place of the booking embed. */
+.elsewhere { list-style: none; margin: 1.5rem 0 0; padding: 0; border-top: 1px solid var(--rule); }
+.elsewhere li { display: grid; grid-template-columns: 7.5rem 1fr; gap: 1rem; padding: 0.9rem 0; border-bottom: 1px solid var(--rule); }
+.elsewhere .k { font-family: var(--font-mono); font-size: 0.85rem; color: var(--muted); }
+.elsewhere a { color: inherit; }
+
+/* Section headings inside the work feed. */
+.feed-h { margin: clamp(2.5rem, 6vw, 4.5rem) 0 1rem; }
+.feed-h:first-of-type { margin-top: 0; }
+.feed-note { max-width: 46rem; margin-top: 1.5rem; color: var(--muted); }
