@@ -19,11 +19,10 @@
   color: var(--deep);
 }
 
-/* The DL mark: letters in the text colour, a mint cursor that blinks. */
-.sig { color: var(--text); }
-.sig-cur { fill: var(--mint); animation: sig-blink 1.1s steps(1) infinite; }
-@keyframes sig-blink { 50% { opacity: 0; } }
-@media (prefers-reduced-motion: reduce) { .sig-cur { animation: none; } }
+/* A mint block cursor blinking after the name, in the header and footer. */
+.cur { display: inline-block; height: 0.6em; width: auto; aspect-ratio: 3 / 7; margin-left: 0.14em; vertical-align: baseline; fill: var(--mint); animation: cur-blink 1.1s steps(1) infinite; }
+@keyframes cur-blink { 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .cur { animation: none; } }
 
 /* The "elsewhere" panel on the contact page, in place of the booking embed. */
 .elsewhere { list-style: none; margin: 1.5rem 0 0; padding: 0; border-top: 1px solid var(--rule); }
