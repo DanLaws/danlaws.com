@@ -19,7 +19,6 @@ Built from the **Stipple** template in the Sandbanks Digital template library: p
 
 ## Before launch
 
-- Fill in the career and education rows marked **To fill in** on `about.html`.
 - Rewrite the four "What I hold to" lines on the home page in your own words (currently a draft).
 - Connect the contact form (it validates but sends nothing yet).
 - Remove `<meta name="robots" content="noindex">` from every page.

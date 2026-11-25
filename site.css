@@ -25,6 +25,13 @@
 .elsewhere .k { font-family: var(--font-mono); font-size: 0.85rem; color: var(--muted); }
 .elsewhere a { color: inherit; }
 
+/* Education cards: dates and result above the qualification. */
+.ed-when { margin-bottom: 8px; font: 600 0.85rem/1.4 var(--font-mono); color: var(--mark); }
+
+/* Sub-headings between the two skills grids on the about page. */
+.sk-sub { margin: clamp(32px, 5vw, 56px) 0 0; font: 600 0.9rem/1.4 var(--font-mono); letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+.sk-sub + .trio { margin-top: 18px; }
+
 /* Section headings inside the work feed. */
 .feed-h { margin: clamp(2.5rem, 6vw, 4.5rem) 0 1rem; }
 .feed-h:first-of-type { margin-top: 0; }
