@@ -58,16 +58,18 @@
         <li><span class="k">Based</span><span>Poole, Dorset</span></li>
       </ul>
     </div>
-    <!-- TO CONNECT: this form is not wired to anything yet (no email is shown on the site by choice). Point it at a form service or a small endpoint before launch. -->
-    <form class="cform" id="cform" data-demo-form novalidate aria-labelledby="cf-h" data-reveal>
+    <!-- Notes go to Dan's private dashboard (dashboard.danlaws.com/api/contact), so no email address is shown on the site. -->
+    <form class="cform" id="cform" data-contact-form data-endpoint="https://dashboard.danlaws.com/api/contact" novalidate aria-labelledby="cf-h" data-reveal>
       <h2 id="cf-h">Send a note</h2>
-      <div class="field"><label for="cf-name">Your name</label><input type="text" id="cf-name" name="name" autocomplete="name" required><p class="err" id="cf-name-e" hidden></p></div>
-      <div class="field"><label for="cf-email">Your email</label><input type="email" id="cf-email" name="email" autocomplete="email" inputmode="email" required><p class="err" id="cf-email-e" hidden></p></div>
+      <div class="field"><label for="cf-name">Your name</label><input type="text" id="cf-name" name="name" autocomplete="name" maxlength="100" required><p class="err" id="cf-name-e" hidden></p></div>
+      <div class="field"><label for="cf-email">Your email</label><input type="email" id="cf-email" name="email" autocomplete="email" inputmode="email" maxlength="254" required><p class="err" id="cf-email-e" hidden></p></div>
       <div class="field"><label for="cf-topic">What is it about</label><select id="cf-topic" name="topic" required><option value="">Choose one</option><option>A website for my business</option><option>A product or web app</option><option>A role I&rsquo;m hiring for</option><option>Something else</option></select><p class="err" id="cf-topic-e" hidden></p></div>
-      <div class="field"><label for="cf-msg">Your message</label><textarea id="cf-msg" name="message" rows="5" required></textarea><p class="err" id="cf-msg-e" hidden></p></div>
+      <div class="field"><label for="cf-msg">Your message</label><textarea id="cf-msg" name="message" rows="5" maxlength="5000" required></textarea><p class="err" id="cf-msg-e" hidden></p></div>
+      <div class="hp" aria-hidden="true"><label for="cf-web">Leave this empty</label><input type="text" id="cf-web" name="website" tabindex="-1" autocomplete="off"></div>
       <div class="field"><label class="pick" for="cf-ok"><input type="checkbox" id="cf-ok" name="ok" required><span class="chk-box" aria-hidden="true"></span><span>Dan may reply to the address above.</span></label><p class="err" id="cf-ok-e" hidden></p></div>
       <button class="cta" type="submit">Send the note</button>
-      <p class="c-done" id="cform-done" role="status" hidden>Thanks. This form isn&rsquo;t connected yet, so nothing was sent. For now, find me on GitHub or through Sandbanks Digital.</p>
+      <p class="c-done" id="cform-done" role="status" hidden>Thanks, your note has reached me. I&rsquo;ll reply to the address you gave.</p>
+      <p class="c-fail" id="cform-fail" role="alert" hidden></p>
     </form>
   </div>
 </section>

@@ -44,3 +44,9 @@
 
 /* Degrees under the home intro. */
 .creds { list-style: none; margin: -12px 0 28px; padding: 0; font: 600 clamp(0.8rem, 3.6vw, 0.95rem)/1.6 var(--font-mono); color: var(--mint-ink); }
+
+/* Contact form: a field people never see (bots fill it in), a note when sending fails, and a quiet button while it sends. */
+.hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.c-fail { margin-top: 18px; padding: 16px 18px; border: 2px solid var(--err); color: var(--err); font: 700 1rem/1.5 var(--font-mono); }
+.c-fail[hidden], .c-done[hidden] { display: none; }
+.cform.is-sending .cta { opacity: 0.6; cursor: progress; }

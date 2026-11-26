@@ -228,10 +228,22 @@
     });
   }
 
-  /* ---- forms: labelled errors in text, a confirmation only after a valid submit (nothing is sent: this is a demonstration) ---- */
-  $$('form[data-demo-form]').forEach(function (f) {
-    var done = $('.c-done', f);
+  /* ---- contact form: labelled errors in text; a valid note is posted to Dan's dashboard, then a confirmation or a reason it failed.
+     The hidden "website" field and the time the page was open let the dashboard ignore bots. On a local preview it posts to the local dashboard. ---- */
+  $$('form[data-contact-form]').forEach(function (f) {
+    var done = $('.c-done', f), failNote = $('.c-fail', f), btn = $('button[type="submit"]', f);
     var fields = $$('input[required], select[required], textarea[required]', f);
+    var opened = Date.now();
+    var local = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+    var endpoint = local ? 'http://localhost:3000/api/contact' : f.getAttribute('data-endpoint');
+    var value = function (n) { var el = f.elements.namedItem(n); return el && el.value ? el.value.trim() : ''; };
+    var show = function (el) { el.hidden = false; el.setAttribute('tabindex', '-1'); el.focus(); };
+    var failed = function (status) {
+      failNote.textContent = status === 429
+        ? 'A lot of notes have arrived just now. Try again in an hour.'
+        : 'Sorry, that didn’t send. Try again in a few minutes, or find me on GitHub.';
+      show(failNote);
+    };
     var fail = function (el, msg) {
       var er = doc.getElementById(el.id + '-e');
       el.setAttribute('aria-invalid', 'true');
@@ -245,6 +257,7 @@
     };
     f.addEventListener('submit', function (e) {
       e.preventDefault();
+      if (f.classList.contains('is-sending')) return;
       var bad = [];
       fields.forEach(function (el) {
         clearOne(el);
@@ -253,8 +266,25 @@
         if (!v) { bad.push(fail(el, el.tagName === 'SELECT' ? 'Choose one.' : 'This one is needed.')); return; }
         if (el.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) bad.push(fail(el, 'That does not look like an email address.'));
       });
-      if (bad.length) { if (done) done.hidden = true; bad[0].focus(); return; }
-      if (done) { done.hidden = false; done.setAttribute('tabindex', '-1'); done.focus(); }
+      done.hidden = true; failNote.hidden = true;
+      if (bad.length) { bad[0].focus(); return; }
+
+      var label = btn.textContent;
+      f.classList.add('is-sending'); btn.disabled = true; btn.textContent = 'Sending…';
+      fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: value('name'), email: value('email'), topic: value('topic'), message: value('message'),
+          ok: f.elements.namedItem('ok').checked, website: value('website'), elapsed: Date.now() - opened
+        })
+      }).then(function (r) {
+        return r.json().catch(function () { return {}; }).then(function (j) {
+          if (r.ok && j.ok) { f.reset(); show(done); } else failed(r.status);
+        });
+      }, function () { failed(0); }).then(function () {
+        f.classList.remove('is-sending'); btn.disabled = false; btn.textContent = label;
+      });
     });
     var again = function (e) { if (e.target.id && e.target.getAttribute('aria-invalid')) clearOne(e.target); };
     f.addEventListener('input', again); f.addEventListener('change', again);
